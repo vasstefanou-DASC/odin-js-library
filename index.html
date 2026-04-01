@@ -10,8 +10,24 @@
 <body>
     <div class="menu">
         <h1>Odin Library</h1>
-        <button type="submit"><img class="svg" src="images/book-open-variant.svg">Add Book</button>
+        <button command="show-modal" commandfor="add-book" type="submit">
+            <img class="svg" src="images/book-open-variant.svg">Add Book
+        </button>
     </div>
+    <dialog id="add-book">
+        <form>
+            <legend>Book Details</legend>
+            <label for="author">Author: </label>
+            <input type="text" id="author" name="author">
+            <label for="title">Title: </label>
+            <input type="text" id="title" name="title">
+            <label for="pages">Number of pages: </label>
+            <input type="text" id="pages" name="pages">
+            <label for="read">Read (Yes or No): </label>
+            <input type="text" id="read" name="read">    
+        </form>
+        <button commandfor="add-book" command="close">Close</button>
+    </dialog>
     <div class="booklist">
 
     </div>

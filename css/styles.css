@@ -38,12 +38,50 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button[command="show-modal"]:hover {
     transform: scale(1.2);
     transition: transform 0.5s;
 }
 
+button[command="close"] {
+    justify-content: center;
+}
 .svg {
     width:25px;
+}
+
+dialog {
+    background-color: var(--alabaster-grey);
+}
+
+form {
+    height:450px;
+    width:350px;
+    font-family:inherit;
+}
+
+legend {
+    text-align:center;
+    font-size: 1.4rem;
+    font-weight:700;
+    border-bottom: 1px solid var(--cool-steel);
+    margin-bottom: 15px;
+}
+
+.inputs {
+    display:flex;
+    flex-direction: column;
+    text-align:center;
+    gap:10px;
+}
+
+label {
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+input {
+    font-size: 1.2rem;
+    
 }
 

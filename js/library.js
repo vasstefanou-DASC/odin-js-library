@@ -21,6 +21,20 @@ function Book(author,title,pages,read) {
     }
 }
 
+Book.prototype.toggleIfRead = function() {
+    this.read = (this.read.toLowerCase() === "yes") ? "no" : "yes";
+    this.setRating();
+    showBooks();
+}
+
+Book.prototype.setRating = function() {
+    if (this.read.toLowerCase() === "yes") {
+        this.rating = +prompt("Please enter a book rating (?/10):");
+    } else {
+        this.rating = "Not rated yet";
+    }
+}
+
 function findBook(author,title) {
     for (const book of myLibrary) {
         if(book.author === author && book.title == title) {
@@ -58,6 +72,9 @@ function showBooks() {
         toggleRead.classList.add("card-buttons")
         deleteBook.classList.add("card-buttons")
         toggleRead.textContent = "Toggle Read";
+        toggleRead.addEventListener("click" , function() {
+            book.toggleIfRead();
+        });
         deleteBook.textContent = "Delete";
         deleteBook.addEventListener("click",function (){
             deletion(book.id);
@@ -95,6 +112,8 @@ function deletion(bookId) {
         }
     }
 }
+
+
 
 
 

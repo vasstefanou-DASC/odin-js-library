@@ -59,6 +59,9 @@ function showBooks() {
         deleteBook.classList.add("card-buttons")
         toggleRead.textContent = "Toggle Read";
         deleteBook.textContent = "Delete";
+        deleteBook.addEventListener("click",function (){
+            deletion(book.id);
+        });
         card.appendChild(toggleRead);
         card.appendChild(deleteBook);
         bookList.appendChild(card);
@@ -82,6 +85,18 @@ confirmBtn.addEventListener("click", function() {
     dialog.querySelector("#pages").value = "";
     dialog.querySelector("#read").value = "";
 });
+
+function deletion(bookId) {
+    for (const book of myLibrary) {
+        if (book.id === bookId) {
+            const index =  myLibrary.indexOf(book);
+            myLibrary.splice(index,1);
+            showBooks();
+        }
+    }
+}
+
+
 
 
 

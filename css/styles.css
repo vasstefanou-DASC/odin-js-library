@@ -11,7 +11,8 @@ body {
     font-family: system-ui, sans-serif;
     margin: 0px;
     box-sizing: border-box;
-    color: var(--porcelain);
+    color:black;
+    height:100vh;
 }
 
 .menu {
@@ -22,6 +23,7 @@ body {
     padding: 0px 30px;
     border-bottom: 1px solid var(--dust-grey);
     background: linear-gradient(.25turn,var(--gunmetal),var(--cool-steel));
+    color: var(--porcelain);
 }
 
 button {
@@ -43,7 +45,7 @@ button[command="show-modal"]:hover {
     transition: transform 0.5s;
 }
 
-button[command="close"] {
+.dialog-buttons button {
     justify-content: center;
 }
 .svg {
@@ -55,7 +57,7 @@ dialog {
 }
 
 form {
-    height:450px;
+    height:380px;
     width:350px;
     font-family:inherit;
 }
@@ -82,6 +84,36 @@ label {
 
 input {
     font-size: 1.2rem;
+    padding:6px;
+    border-radius:6px;
+    border: 1px solid var(--khaki-beige);
     
 }
 
+.dialog-buttons {
+    display:flex;
+    justify-content: space-around;
+}
+
+.booklist {
+    background-color: var(--khaki-beige);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px 30px;
+}
+
+.book-description {
+    padding: 8px 14px;
+    background: var(--dust-grey);
+    border-radius: 12px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-buttons {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+}

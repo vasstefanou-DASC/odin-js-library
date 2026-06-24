@@ -4,34 +4,27 @@ const bookList = document.querySelector(".booklist");
 const dialog = document.getElementById("add-book");
 const confirmBtn = dialog.querySelector("#confirm-add-book");
 
-function Book(author,title,pages,read) {
-    this.author = author;
-    this.title = title;
-    this.pages = pages;
-    this.read = read;
-    this.id = crypto.randomUUID();
-    this.rating = addRating();
+class Book {
+    constructor(author,title,pages,read) {
+        this.author = author;
+        this.title = title;
+        this.pages = pages;
+        this.read = read;
+        this.id = crypto.randomUUID();
+        this.rating = this.setRating();
+    }
 
-    function addRating() {
-        if (read.toLowerCase()==="no") {
+    setRating() {
+        if (this.read.toLowerCase()==="no") {
             return "Not rated yet";
-        } else if (read.toLowerCase()==="yes") {
+        } else if (this.read.toLowerCase()==="yes") {
             return +prompt("Please enter a book rating (?/10):");
         }
     }
-}
 
-Book.prototype.toggleIfRead = function() {
-    this.read = (this.read.toLowerCase() === "yes") ? "no" : "yes";
-    this.setRating();
-    showBooks();
-}
-
-Book.prototype.setRating = function() {
-    if (this.read.toLowerCase() === "yes") {
-        this.rating = +prompt("Please enter a book rating (?/10):");
-    } else {
-        this.rating = "Not rated yet";
+    toggleRead() {
+        this.read = (this.read.toLowerCase() === "yes") ? "no" : "yes";
+        this.rating = this.setRating();
     }
 }
 
@@ -73,7 +66,8 @@ function showBooks() {
         deleteBook.classList.add("card-buttons")
         toggleRead.textContent = "Toggle Read";
         toggleRead.addEventListener("click" , function() {
-            book.toggleIfRead();
+            book.toggleRead();
+            showBooks();
         });
         deleteBook.textContent = "Delete";
         deleteBook.addEventListener("click",function (){
